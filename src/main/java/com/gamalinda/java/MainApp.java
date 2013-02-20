@@ -24,11 +24,14 @@ public class MainApp {
 	}
 
 	private void run() {
-		System.out.println("Hello World");
-		Log.d(TAG, "Test!");
+		printHelloWorld();
 
 		for(String arg : argsList) {
 			System.out.println(arg);
 		}
+	}
+
+	private void printHelloWorld() {
+		System.out.println("Hello World");
 	}
 }
