@@ -26,6 +26,7 @@ public class MainApp {
 	private void run() {
 		printHelloWorld();
 		printArgs();
+		respondToArgs();
 	}
 
 	private void printHelloWorld() {
@@ -36,5 +37,22 @@ public class MainApp {
 		for(String arg : argsList) {
 			System.out.println(arg);
 		}
+	}
+
+	private void respondToArgs() {
+		for (String arg : argsList) {
+
+			if (arg.equals("-a")) {
+				System.out.println("Responding to A");
+			} else if (arg.equals("-b")) {
+				System.out.println("Responding to B");
+			} else if (arg.equals("-c")) {
+				System.out.println("Responding to C");
+			} else if (arg.equals("-d")) {
+				System.out.println("Responding to D");
+			} else {
+				System.out.println("Responding to Default");
+			}
+		}//for	
 	}
 }
