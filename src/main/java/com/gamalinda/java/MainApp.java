@@ -34,7 +34,7 @@ public class MainApp {
 	}
 
 	private void printArgs() {
-		for(String arg : argsList) {
+		for (String arg : argsList) {
 			System.out.println(arg);
 		}
 	}
