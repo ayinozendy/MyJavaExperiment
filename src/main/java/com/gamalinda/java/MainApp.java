@@ -25,13 +25,16 @@ public class MainApp {
 
 	private void run() {
 		printHelloWorld();
-
-		for(String arg : argsList) {
-			System.out.println(arg);
-		}
+		printArgs();
 	}
 
 	private void printHelloWorld() {
 		System.out.println("Hello World");
+	}
+
+	private void printArgs() {
+		for(String arg : argsList) {
+			System.out.println(arg);
+		}
 	}
 }
