@@ -31,6 +31,7 @@ public class MainApp {
 
 	private void printHelloWorld() {
 		System.out.println("Hello World");
+		Log.i(TAG, "Hello World");
 	}
 
 	private void printArgs() {
@@ -53,6 +54,6 @@ public class MainApp {
 			} else {
 				System.out.println("Responding to Default");
 			}
-		}//for	
+		}
 	}
 }
