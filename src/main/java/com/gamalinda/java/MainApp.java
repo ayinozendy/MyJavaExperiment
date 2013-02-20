@@ -23,7 +23,7 @@ public class MainApp {
 		return mainAppInstace;
 	}
 
-	public void run() {
+	private void run() {
 		System.out.println("Hello World");
 		Log.d(TAG, "Test!");
 
