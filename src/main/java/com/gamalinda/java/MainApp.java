@@ -2,6 +2,8 @@ package com.gamalinda.java;
 
 import java.util.*;
 import javax.swing.*;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 
 import com.gamalinda.java.util.Log;
 
@@ -12,6 +14,9 @@ public class MainApp {
 	private static boolean running = true;
 
 	private static List<String> argsList;
+
+	private static double SCREEN_WIDTH;
+	private static double SCREEN_HEIGHT;
 
 	private MainApp() {}
 
@@ -63,8 +68,19 @@ public class MainApp {
 	private void writeOnScreen() {
 		JWindow w = new JWindow();
 		w.add(new JLabel("Hello World!"));
-		w.setLocation(300, 300);
+
+		getScreenDimensions();
+		int centerHorizontal = (int) (SCREEN_WIDTH/2);
+		int centerVertical = (int) (SCREEN_HEIGHT/2);
+
+		w.setLocation(centerHorizontal, centerVertical);
 		w.pack();
 		w.setVisible(true);
+	}
+
+	private void getScreenDimensions() {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		SCREEN_WIDTH = screenSize.getWidth();
+		SCREEN_HEIGHT = screenSize.getHeight();
 	}
 }
