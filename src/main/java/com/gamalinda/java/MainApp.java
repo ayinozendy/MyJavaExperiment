@@ -1,6 +1,8 @@
 package com.gamalinda.java;
 
 import java.util.*;
+import javax.swing.*;
+
 import com.gamalinda.java.util.Log;
 
 public class MainApp {
@@ -27,6 +29,7 @@ public class MainApp {
 		printHelloWorld();
 		printArgs();
 		respondToArgs();
+		writeOnScreen();
 	}
 
 	private void printHelloWorld() {
@@ -55,5 +58,13 @@ public class MainApp {
 				System.out.println("Responding to Default");
 			}
 		}
+	}
+
+	private void writeOnScreen() {
+		JWindow w = new JWindow();
+		w.add(new JLabel("Hello World!"));
+		w.setLocation(300, 300);
+		w.pack();
+		w.setVisible(true);
 	}
 }
