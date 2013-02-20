@@ -1,8 +1,8 @@
-package com.gamalinda.java
+package com.gamalinda.java;
 
 public class MainApp {
 
-	public static void Main(String[] args) {
+	public static void main(String[] args) {
 		System.out.println("Hello World");
 	}
 }
