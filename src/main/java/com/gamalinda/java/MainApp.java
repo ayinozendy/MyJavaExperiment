@@ -3,8 +3,6 @@ package com.gamalinda.java;
 import com.gamalinda.java.jframe.FeaturesWindow;
 import com.gamalinda.java.util.Log;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
