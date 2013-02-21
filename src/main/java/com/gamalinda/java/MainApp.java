@@ -33,7 +33,7 @@ public class MainApp {
         printHelloWorld();
         printArgs();
         respondToArgs();
-        showMainFeaturesWindow();
+        showAndRunMainFeaturesWindow();
     }
 
     private void printHelloWorld() {
@@ -64,7 +64,7 @@ public class MainApp {
         }
     }
 
-    private void showMainFeaturesWindow() {
+    private void showAndRunMainFeaturesWindow() {
         FeaturesWindow mainFeaturesWindow = new FeaturesWindow();
         mainFeaturesWindow.buildWindow("MyJavaExperiment", WINDOW_WIDTH, WINDOW_HEIGHT);
         mainFeaturesWindow.showWindow();
