@@ -14,15 +14,19 @@ public class FeaturesWindow {
     private static double SCREEN_WIDTH;
     private static double SCREEN_HEIGHT;
 
-    public void buildWindow(String windowTitle, int width, int height) {
-        mainFrame = new JFrame(windowTitle);
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setSize(width, height);
-
-        showMenuBar();
+    private FeaturesWindow() {
     }
 
-    private void showMenuBar() {
+    public static FeaturesWindow buildWindow(String windowTitle, int width, int height) {
+        FeaturesWindow featuresWindow = new FeaturesWindow();
+        featuresWindow.mainFrame = new JFrame(windowTitle);
+        featuresWindow.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        featuresWindow.mainFrame.setSize(width, height);
+
+        return featuresWindow;
+    }
+
+    public void showMenuBar() {
         menuBar = new JMenuBar(); //The Menu Bar on Windows
         fileMenu = new JMenu("File"); //The Menu Bar Menu item
         featuresMenu = new JMenu("Features");
