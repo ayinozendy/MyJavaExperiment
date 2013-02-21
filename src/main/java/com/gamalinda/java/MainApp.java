@@ -1,9 +1,8 @@
 package com.gamalinda.java;
 
+import com.gamalinda.java.jframe.FeaturesWindow;
 import com.gamalinda.java.util.Log;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +13,8 @@ public class MainApp {
 
     private static List<String> argsList;
 
-    private static double SCREEN_WIDTH;
-    private static double SCREEN_HEIGHT;
+    private static final int WINDOW_WIDTH = 300;
+    private static final int WINDOW_HEIGHT = 240;
 
     private MainApp() {
     }
@@ -34,8 +33,7 @@ public class MainApp {
         printHelloWorld();
         printArgs();
         respondToArgs();
-        writeOnScreen();
-        showWindow();
+        showAndRunMainFeaturesWindow();
     }
 
     private void printHelloWorld() {
@@ -66,29 +64,10 @@ public class MainApp {
         }
     }
 
-    private void writeOnScreen() {
-        JWindow w = new JWindow();
-        w.add(new JLabel("Hello World!"));
-
-        getScreenDimensions();
-        int centerHorizontal = (int) (SCREEN_WIDTH / 2);
-        int centerVertical = (int) (SCREEN_HEIGHT / 2);
-
-        w.setLocation(centerHorizontal, centerVertical);
-        w.pack();
-        w.setVisible(true);
-    }
-
-    private void getScreenDimensions() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        SCREEN_WIDTH = screenSize.getWidth();
-        SCREEN_HEIGHT = screenSize.getHeight();
-    }
-
-    private void showWindow() {
-        JFrame frame = new JFrame("A JFrame Window");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 240);
-        frame.setVisible(true);
+    private void showAndRunMainFeaturesWindow() {
+        FeaturesWindow mainFeaturesWindow = FeaturesWindow.buildWindow("MyJavaExperiment", WINDOW_WIDTH, WINDOW_HEIGHT);
+        mainFeaturesWindow.showMenuBar();
+        mainFeaturesWindow.showWindow();
+        mainFeaturesWindow.run();
     }
 }
