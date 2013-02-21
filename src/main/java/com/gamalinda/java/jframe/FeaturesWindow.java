@@ -1,5 +1,6 @@
 package com.gamalinda.java.jframe;
 
+import com.gamalinda.java.jwindow.WriteToScreenFeature;
 import com.gamalinda.java.util.Log;
 
 import javax.swing.*;
@@ -14,10 +15,6 @@ public class FeaturesWindow implements ActionListener {
     private static JMenuBar menuBar;
     private static JMenu fileMenu;
     private static JMenu featuresMenu;
-
-    //Desktop screen dimensions
-    private static double SCREEN_WIDTH;
-    private static double SCREEN_HEIGHT;
 
     //Menu Item Names/Action
     private static final String EXIT = "Exit";
@@ -73,7 +70,7 @@ public class FeaturesWindow implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(EXIT)) {
-            Log.d(TAG, "exitApp()"); //Should log first before exit app because it won't be reached when exit
+            Log.d(TAG, "exitApp()"); //Should log first before exit app because it won't be reached after exit
             exitApp();
         } else if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
             writeOnScreen();
@@ -86,21 +83,7 @@ public class FeaturesWindow implements ActionListener {
     }
 
     private void writeOnScreen() {
-        JWindow w = new JWindow(); //A frameless window
-        w.add(new JLabel("Hello World!"));
-
-        getScreenDimensions();
-        int centerHorizontal = (int) (SCREEN_WIDTH / 2);
-        int centerVertical = (int) (SCREEN_HEIGHT / 2);
-
-        w.setLocation(centerHorizontal, centerVertical);
-        w.pack(); //Causes this Window to be sized to fit the preferred size and layouts of its subcomponents.
-        w.setVisible(true);
-    }
-
-    private void getScreenDimensions() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        SCREEN_WIDTH = screenSize.getWidth();
-        SCREEN_HEIGHT = screenSize.getHeight();
+        WriteToScreenFeature writeToScreenFeature = new WriteToScreenFeature();
+        writeToScreenFeature.execute();
     }
 }
