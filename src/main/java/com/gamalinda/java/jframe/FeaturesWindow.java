@@ -5,7 +5,11 @@ import java.awt.*;
 
 public class FeaturesWindow {
     private static final String TAG = FeaturesWindow.class.getSimpleName();
+
     private static JFrame mainFrame;
+    private static JMenuBar menuBar;
+    private static JMenu fileMenu;
+    private static JMenu featuresMenu;
 
     private static double SCREEN_WIDTH;
     private static double SCREEN_HEIGHT;
@@ -19,12 +23,21 @@ public class FeaturesWindow {
     }
 
     private void showMenuBar() {
-        JMenuBar menuBar = new JMenuBar(); //The Menu Bar on Windows
-        JMenu fileMenu = new JMenu("File"); //The Menu Bar Menu item
-        JMenu featuresMenu = new JMenu("Features");
+        menuBar = new JMenuBar(); //The Menu Bar on Windows
+        fileMenu = new JMenu("File"); //The Menu Bar Menu item
+        featuresMenu = new JMenu("Features");
+
         menuBar.add(fileMenu); //Add the menus to the menu bar
+        showFileMenuItems();
+
         menuBar.add(featuresMenu);
-        mainFrame.getContentPane().add(BorderLayout.NORTH,menuBar);
+
+        mainFrame.getContentPane().add(BorderLayout.NORTH, menuBar);
+    }
+
+    private void showFileMenuItems() {
+        JMenuItem exitMenuItem = new JMenuItem("Exit"); //Menu item
+        fileMenu.add(exitMenuItem); //Adding a menu item to a menu
     }
 
     public void showWindow() {
