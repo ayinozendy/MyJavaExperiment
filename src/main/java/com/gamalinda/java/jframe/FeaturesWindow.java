@@ -15,6 +15,7 @@ public class FeaturesWindow implements ActionListener {
     private static JMenu fileMenu;
     private static JMenu featuresMenu;
 
+    //Desktop screen dimensions
     private static double SCREEN_WIDTH;
     private static double SCREEN_HEIGHT;
 
@@ -50,6 +51,7 @@ public class FeaturesWindow implements ActionListener {
 
     private void showFileMenuItems() {
         JMenuItem exitMenuItem = new JMenuItem(EXIT); //Menu item
+        exitMenuItem.addActionListener(this);
         fileMenu.add(exitMenuItem); //Adding a menu item to a menu
     }
 
@@ -70,10 +72,17 @@ public class FeaturesWindow implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
+        if (e.getActionCommand().equals(EXIT)) {
+            Log.d(TAG, "exitApp()"); //Should log first before exit app because it won't be reached when exit
+            exitApp();
+        } else if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
             writeOnScreen();
-            Log.i(TAG, "writeOnScreen()");
+            Log.d(TAG, "writeOnScreen()");
         }
+    }
+
+    private void exitApp() {
+        System.exit(0);
     }
 
     private void writeOnScreen() {
@@ -85,7 +94,7 @@ public class FeaturesWindow implements ActionListener {
         int centerVertical = (int) (SCREEN_HEIGHT / 2);
 
         w.setLocation(centerHorizontal, centerVertical);
-        w.pack();
+        w.pack(); //Causes this Window to be sized to fit the preferred size and layouts of its subcomponents.
         w.setVisible(true);
     }
 
