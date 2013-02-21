@@ -14,6 +14,17 @@ public class FeaturesWindow {
         mainFrame = new JFrame(windowTitle);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(width, height);
+
+        showMenuBar();
+    }
+
+    private void showMenuBar() {
+        JMenuBar menuBar = new JMenuBar(); //The Menu Bar on Windows
+        JMenu fileMenu = new JMenu("File"); //The Menu Bar Menu item
+        JMenu featuresMenu = new JMenu("Features");
+        menuBar.add(fileMenu); //Add the menus to the menu bar
+        menuBar.add(featuresMenu);
+        mainFrame.add(menuBar);
     }
 
     public void showWindow() {
@@ -25,7 +36,7 @@ public class FeaturesWindow {
     }
 
     private void writeOnScreen() {
-        JWindow w = new JWindow();
+        JWindow w = new JWindow(); //A frameless window
         w.add(new JLabel("Hello World!"));
 
         getScreenDimensions();
