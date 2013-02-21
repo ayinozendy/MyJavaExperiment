@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 
 public class FeaturesWindow implements ActionListener {
     private static final String TAG = FeaturesWindow.class.getSimpleName();
@@ -16,6 +15,8 @@ public class FeaturesWindow implements ActionListener {
 
     private static double SCREEN_WIDTH;
     private static double SCREEN_HEIGHT;
+
+    private static final String WRITE_TO_SCREEN = "Write to Screen";
 
     private FeaturesWindow() {
     }
@@ -49,8 +50,9 @@ public class FeaturesWindow implements ActionListener {
     }
 
     private void showFeaturesMenuItems() {
-        JMenuItem writeToScreenItem = new JMenuItem("Write to Screen");
+        JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
         writeToScreenItem.addActionListener(this);
+
         featuresMenu.add(writeToScreenItem);
     }
 
@@ -59,7 +61,14 @@ public class FeaturesWindow implements ActionListener {
     }
 
     public void run() {
-        writeOnScreen();
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
+            writeOnScreen();
+        }
     }
 
     private void writeOnScreen() {
@@ -79,10 +88,5 @@ public class FeaturesWindow implements ActionListener {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         SCREEN_WIDTH = screenSize.getWidth();
         SCREEN_HEIGHT = screenSize.getHeight();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
     }
 }
