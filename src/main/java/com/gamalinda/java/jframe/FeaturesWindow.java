@@ -18,6 +18,8 @@ public class FeaturesWindow implements ActionListener {
     private static double SCREEN_WIDTH;
     private static double SCREEN_HEIGHT;
 
+    //Menu Item Names/Action
+    private static final String EXIT = "Exit";
     private static final String WRITE_TO_SCREEN = "Write to Screen";
 
     private FeaturesWindow() {
@@ -47,7 +49,7 @@ public class FeaturesWindow implements ActionListener {
     }
 
     private void showFileMenuItems() {
-        JMenuItem exitMenuItem = new JMenuItem("Exit"); //Menu item
+        JMenuItem exitMenuItem = new JMenuItem(EXIT); //Menu item
         fileMenu.add(exitMenuItem); //Adding a menu item to a menu
     }
 
