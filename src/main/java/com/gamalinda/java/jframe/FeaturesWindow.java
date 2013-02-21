@@ -1,5 +1,7 @@
 package com.gamalinda.java.jframe;
 
+import com.gamalinda.java.util.Log;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -68,6 +70,7 @@ public class FeaturesWindow implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
             writeOnScreen();
+            Log.i(TAG, "writeOnScreen()");
         }
     }
 
