@@ -35,6 +35,7 @@ public class MainApp {
         printArgs();
         respondToArgs();
         writeOnScreen();
+        showWindow();
     }
 
     private void printHelloWorld() {
@@ -82,5 +83,12 @@ public class MainApp {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         SCREEN_WIDTH = screenSize.getWidth();
         SCREEN_HEIGHT = screenSize.getHeight();
+    }
+
+    private void showWindow() {
+        JFrame frame = new JFrame("A JFrame Window");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 240);
+        frame.setVisible(true);
     }
 }
