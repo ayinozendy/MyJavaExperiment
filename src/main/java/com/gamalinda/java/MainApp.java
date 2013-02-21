@@ -1,5 +1,6 @@
 package com.gamalinda.java;
 
+import com.gamalinda.java.jframe.FeaturesWindow;
 import com.gamalinda.java.util.Log;
 
 import javax.swing.*;
@@ -16,6 +17,9 @@ public class MainApp {
 
     private static double SCREEN_WIDTH;
     private static double SCREEN_HEIGHT;
+
+    private static final int WINDOW_WIDTH = 300;
+    private static final int WINDOW_HEIGHT = 240;
 
     private MainApp() {
     }
@@ -35,7 +39,7 @@ public class MainApp {
         printArgs();
         respondToArgs();
         writeOnScreen();
-        showWindow();
+        showMainFeaturesWindow();
     }
 
     private void printHelloWorld() {
@@ -85,10 +89,9 @@ public class MainApp {
         SCREEN_HEIGHT = screenSize.getHeight();
     }
 
-    private void showWindow() {
-        JFrame frame = new JFrame("A JFrame Window");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 240);
-        frame.setVisible(true);
+    private void showMainFeaturesWindow() {
+        FeaturesWindow mainFeaturesWindow = new FeaturesWindow();
+        mainFeaturesWindow.buildWindow("MyJavaExperiment", WINDOW_WIDTH, WINDOW_HEIGHT);
+        mainFeaturesWindow.showWindow();
     }
 }
