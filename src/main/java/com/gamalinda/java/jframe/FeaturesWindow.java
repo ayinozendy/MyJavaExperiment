@@ -31,6 +31,7 @@ public class FeaturesWindow {
         showFileMenuItems();
 
         menuBar.add(featuresMenu);
+        showFeaturesMenuItems();
 
         mainFrame.getContentPane().add(BorderLayout.NORTH, menuBar);
     }
@@ -38,6 +39,11 @@ public class FeaturesWindow {
     private void showFileMenuItems() {
         JMenuItem exitMenuItem = new JMenuItem("Exit"); //Menu item
         fileMenu.add(exitMenuItem); //Adding a menu item to a menu
+    }
+
+    private void showFeaturesMenuItems() {
+        JMenuItem writeToScreenItem = new JMenuItem("Write to Screen");
+        featuresMenu.add(writeToScreenItem);
     }
 
     public void showWindow() {
