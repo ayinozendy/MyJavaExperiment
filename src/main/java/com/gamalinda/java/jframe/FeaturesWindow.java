@@ -2,8 +2,11 @@ package com.gamalinda.java.jframe;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 
-public class FeaturesWindow {
+public class FeaturesWindow implements ActionListener {
     private static final String TAG = FeaturesWindow.class.getSimpleName();
 
     private static JFrame mainFrame;
@@ -47,6 +50,7 @@ public class FeaturesWindow {
 
     private void showFeaturesMenuItems() {
         JMenuItem writeToScreenItem = new JMenuItem("Write to Screen");
+        writeToScreenItem.addActionListener(this);
         featuresMenu.add(writeToScreenItem);
     }
 
@@ -75,5 +79,10 @@ public class FeaturesWindow {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         SCREEN_WIDTH = screenSize.getWidth();
         SCREEN_HEIGHT = screenSize.getHeight();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
     }
 }
