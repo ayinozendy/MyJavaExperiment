@@ -15,9 +15,6 @@ public class MainApp {
 
     private static List<String> argsList;
 
-    private static double SCREEN_WIDTH;
-    private static double SCREEN_HEIGHT;
-
     private static final int WINDOW_WIDTH = 300;
     private static final int WINDOW_HEIGHT = 240;
 
@@ -38,7 +35,6 @@ public class MainApp {
         printHelloWorld();
         printArgs();
         respondToArgs();
-        writeOnScreen();
         showMainFeaturesWindow();
     }
 
@@ -70,28 +66,10 @@ public class MainApp {
         }
     }
 
-    private void writeOnScreen() {
-        JWindow w = new JWindow();
-        w.add(new JLabel("Hello World!"));
-
-        getScreenDimensions();
-        int centerHorizontal = (int) (SCREEN_WIDTH / 2);
-        int centerVertical = (int) (SCREEN_HEIGHT / 2);
-
-        w.setLocation(centerHorizontal, centerVertical);
-        w.pack();
-        w.setVisible(true);
-    }
-
-    private void getScreenDimensions() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        SCREEN_WIDTH = screenSize.getWidth();
-        SCREEN_HEIGHT = screenSize.getHeight();
-    }
-
     private void showMainFeaturesWindow() {
         FeaturesWindow mainFeaturesWindow = new FeaturesWindow();
         mainFeaturesWindow.buildWindow("MyJavaExperiment", WINDOW_WIDTH, WINDOW_HEIGHT);
         mainFeaturesWindow.showWindow();
+        mainFeaturesWindow.run();
     }
 }
