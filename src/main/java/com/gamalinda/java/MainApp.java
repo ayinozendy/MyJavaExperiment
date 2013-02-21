@@ -10,7 +10,7 @@ import java.util.List;
 public class MainApp {
     private static final String TAG = MainApp.class.getSimpleName();
 
-    private static MainApp mainAppInstace = new MainApp();
+    private static MainApp mainAppInstance = new MainApp();
 
     private static List<String> argsList;
 
@@ -27,7 +27,7 @@ public class MainApp {
     }
 
     public static MainApp getInstance() {
-        return mainAppInstace;
+        return mainAppInstance;
     }
 
     private void run() {
