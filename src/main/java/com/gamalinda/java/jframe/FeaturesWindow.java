@@ -24,7 +24,7 @@ public class FeaturesWindow {
         JMenu featuresMenu = new JMenu("Features");
         menuBar.add(fileMenu); //Add the menus to the menu bar
         menuBar.add(featuresMenu);
-        mainFrame.add(menuBar);
+        mainFrame.getContentPane().add(BorderLayout.NORTH,menuBar);
     }
 
     public void showWindow() {
