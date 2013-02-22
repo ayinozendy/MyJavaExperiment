@@ -36,8 +36,12 @@ public class MainApp {
     }
 
     private static void runAsMacApp() {
-        moveMenuBarToMacMenuBar();
-        changeMacMenuBarApplicationName();
+        /*
+        The Menubar and Application Name can be set using plist, uncomment these methods
+        if you want to test using the jar only.
+        */
+        //moveMenuBarToMacMenuBar();
+        //changeMacMenuBarApplicationName();
         setUiLookAndFeelAsMacApp();
     }
 
@@ -46,7 +50,7 @@ public class MainApp {
     }
 
     private static void changeMacMenuBarApplicationName() {
-        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "JavaExperiment");
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java Experiment");
     }
 
     private static void setUiLookAndFeelAsMacApp() {
