@@ -26,11 +26,13 @@ public class MainApp {
         getInstance().run();
     }
 
+    //https://developer.apple.com/library/mac/#technotes/tn2002/tn2110.html
     public static boolean isOSX() {
         String osName = System.getProperty("os.name");
         return osName.contains("OS X");
     }
 
+    //https://developer.apple.com/library/mac/#technotes/tn2002/tn2110.html
     public static boolean isSnowLeopardOrBetter() {
         String osName = System.getProperty("os.name");
         if (!osName.contains("OS X")) return false;
