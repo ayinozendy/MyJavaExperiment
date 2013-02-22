@@ -101,7 +101,7 @@ public class MainApp {
     }
 
     private void showAndRunMainFeaturesWindow() {
-        FeaturesWindow mainFeaturesWindow = FeaturesWindow.buildWindow("MyJavaExperiment", WINDOW_WIDTH, WINDOW_HEIGHT);
+        FeaturesWindow mainFeaturesWindow = FeaturesWindow.buildWindow("The Java Experiment", WINDOW_WIDTH, WINDOW_HEIGHT);
         mainFeaturesWindow.showMenuBar();
         mainFeaturesWindow.showWindow();
         mainFeaturesWindow.run();
