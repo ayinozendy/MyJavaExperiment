@@ -46,7 +46,7 @@ public class FeaturesWindow implements ActionListener {
         menuBar.add(featuresMenu);
         showFeaturesMenuItems();
 
-        mainFrame.getContentPane().add(BorderLayout.NORTH, menuBar);
+        mainFrame.setJMenuBar(menuBar);
     }
 
     private void showFileMenuItems() {
