@@ -29,6 +29,7 @@ public class MainApp {
 
     private static void runAsMacAppIfOSX() {
         if (SystemCheckerUtility.isOSX()) {
+            Log.i(TAG, "OS X detected, applying OS X look and feel");
             runAsMacApp();
         }
     }
@@ -42,13 +43,13 @@ public class MainApp {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            Log.e(TAG, e.toString());
         } catch (InstantiationException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            Log.e(TAG, e.toString());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            Log.e(TAG, e.toString());
         } catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            Log.e(TAG, e.toString());
         }
     }
 
