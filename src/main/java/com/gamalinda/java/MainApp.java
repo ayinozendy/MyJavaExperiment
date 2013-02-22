@@ -37,6 +37,7 @@ public class MainApp {
     private static void runAsMacApp() {
         setUiLookAndFeelAsMacApp();
         moveMenuBarToMacMenuBar();
+        changeMacMenuBarApplicationName();
     }
 
     private static void setUiLookAndFeelAsMacApp() {
@@ -57,13 +58,17 @@ public class MainApp {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
     }
 
+    private static void changeMacMenuBarApplicationName() {
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "JavaExperiment");
+    }
+
     public static MainApp getInstance() {
         return mainAppInstance;
     }
 
     private void run() {
-        printArgs();
         respondToArgs();
+        printArgs();
         showAndRunMainFeaturesWindow();
     }
 
