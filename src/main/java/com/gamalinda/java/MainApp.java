@@ -21,7 +21,6 @@ public class MainApp {
     }
 
     public static void main(String[] args) {
-
         argsList = Arrays.asList(args);
         getInstance().run();
     }
@@ -55,6 +54,26 @@ public class MainApp {
         try {
             int minorVers = Integer.parseInt(fragments[1]);
             if (minorVers >= 6) return true;
+        } catch (NumberFormatException e) {
+            // was not an integer
+        }
+
+        return false;
+    }
+
+    //https://developer.apple.com/library/mac/#technotes/tn2002/tn2110.html
+    public static boolean isJava15OrBetter() {
+        String javaVersion = System.getProperty("java.version");
+        String[] fragments = javaVersion.split("\\.");
+
+        // sanity check the "1." part of the version
+        if (!fragments[0].equals("1")) return false;
+        if (fragments.length < 2) return false;
+
+        // check if Java 1.5.x or higher
+        try {
+            int minorVers = Integer.parseInt(fragments[1]);
+            if (minorVers >= 5) return true;
         } catch (NumberFormatException e) {
             // was not an integer
         }
@@ -104,7 +123,6 @@ public class MainApp {
 
     private void respondToArgs() {
         for (String arg : argsList) {
-
             if (arg.equals("-a")) {
                 System.out.println("Responding to A");
             } else if (arg.equals("-b")) {
