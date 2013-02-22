@@ -22,6 +22,7 @@ public class MainApp {
     }
 
     public static void main(String[] args) {
+        runAsMacAppIfOSX();
         argsList = Arrays.asList(args);
         getInstance().run();
     }
