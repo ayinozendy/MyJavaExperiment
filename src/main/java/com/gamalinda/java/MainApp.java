@@ -3,6 +3,7 @@ package com.gamalinda.java;
 import com.gamalinda.java.jframe.FeaturesWindow;
 import com.gamalinda.java.util.Log;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +24,24 @@ public class MainApp {
 
         argsList = Arrays.asList(args);
         getInstance().run();
+    }
+
+    private static void runAsMacApp() {
+        setUiLookAndFeelAsMacApp();
+    }
+
+    private static void setUiLookAndFeelAsMacApp() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (InstantiationException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 
     public static MainApp getInstance() {
