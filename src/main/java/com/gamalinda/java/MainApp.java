@@ -31,6 +31,29 @@ public class MainApp {
         return osName.contains("OS X");
     }
 
+    public static boolean isSnowLeopardOrBetter() {
+        String osName = System.getProperty("os.name");
+        if (!osName.contains("OS X")) return false;
+
+        // split the "10.x.y" version number
+        String osVersion = System.getProperty("os.version");
+        String[] fragments = osVersion.split("\\.");
+
+        // sanity check the "10." part of the version
+        if (!fragments[0].equals("10")) return false;
+        if (fragments.length < 2) return false;
+
+        // check if OS X 10.6(.y)
+        try {
+            int minorVers = Integer.parseInt(fragments[1]);
+            if (minorVers >= 6) return true;
+        } catch (NumberFormatException e) {
+            // was not an integer
+        }
+
+        return false;
+    }
+
     private static void runAsMacApp() {
         setUiLookAndFeelAsMacApp();
     }
