@@ -26,6 +26,11 @@ public class MainApp {
         getInstance().run();
     }
 
+    public static boolean isOSX() {
+        String osName = System.getProperty("os.name");
+        return osName.contains("OS X");
+    }
+
     private static void runAsMacApp() {
         setUiLookAndFeelAsMacApp();
     }
