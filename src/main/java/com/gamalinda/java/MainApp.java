@@ -34,6 +34,7 @@ public class MainApp {
 
     private static void runAsMacApp() {
         setUiLookAndFeelAsMacApp();
+        moveMenuBarToMacMenuBar();
     }
 
     private static void setUiLookAndFeelAsMacApp() {
@@ -48,6 +49,10 @@ public class MainApp {
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+    }
+
+    private static void moveMenuBarToMacMenuBar() {
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
     }
 
     public static MainApp getInstance() {
