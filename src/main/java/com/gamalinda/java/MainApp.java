@@ -26,6 +26,12 @@ public class MainApp {
         getInstance().run();
     }
 
+    private static void runAsMacAppIfOSX() {
+        if (isOSX()) {
+            runAsMacApp();
+        }
+    }
+
     //https://developer.apple.com/library/mac/#technotes/tn2002/tn2110.html
     public static boolean isOSX() {
         String osName = System.getProperty("os.name");
