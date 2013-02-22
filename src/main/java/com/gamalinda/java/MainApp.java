@@ -62,15 +62,9 @@ public class MainApp {
     }
 
     private void run() {
-        printHelloWorld();
         printArgs();
         respondToArgs();
         showAndRunMainFeaturesWindow();
-    }
-
-    private void printHelloWorld() {
-        System.out.println("Hello World");
-        Log.i(TAG, "Hello World");
     }
 
     private void printArgs() {
