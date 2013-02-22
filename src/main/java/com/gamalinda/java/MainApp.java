@@ -5,6 +5,7 @@ import com.gamalinda.java.util.Log;
 import com.gamalinda.java.util.SystemCheckerUtility;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,9 +68,14 @@ public class MainApp {
     }
 
     private void run() {
-        respondToArgs();
-        printArgs();
-        showAndRunMainFeaturesWindow();
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                respondToArgs();
+                printArgs();
+                showAndRunMainFeaturesWindow();
+            }
+        });
     }
 
     private void printArgs() {
