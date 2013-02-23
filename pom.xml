@@ -53,8 +53,21 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
+                                <delete dir="./package"/>
+                                <mkdir dir="./package/Java Experiment.app/Contents/MacOS"/>
+                                <mkdir dir="./package/Java Experiment.app/Contents/Resources/Java"/>
+                                <copy file="./resources/Info.plist"
+                                      todir="./package/Java Experiment.app/Contents/"/>
+                                <copy file="./resources/PkgInfo"
+                                      todir="./package/Java Experiment.app/Contents/"/>
+                                <copy file="./resources/icon.icns"
+                                      todir="./package/Java Experiment.app/Contents/Resources/"/>
                                 <copy file="./target/JavaxTest-jar-with-dependencies.jar"
-                                      tofile="./OSXAppBundle/Java Experiment.app/Contents/Resources/Java/JavaxTest-jar-with-dependencies.jar"/>
+                                      tofile="./package/Java Experiment.app/Contents/Resources/Java/JavaExperiment.jar"/>
+                                <exec executable="cp">
+                                    <arg value="${JAVA_APPLICATION_STUB}"/>
+                                    <arg value="./package/Java Experiment.app/Contents/MacOS/"/>
+                                </exec>
                             </target>
                         </configuration>
                         <goals>
