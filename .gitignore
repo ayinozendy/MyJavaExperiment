@@ -1,0 +1,9 @@
+target/
+package/
+*.iml
+*.ipr
+*.iws
+*.class
+*.jar
+*.zip
+.DS_Store
