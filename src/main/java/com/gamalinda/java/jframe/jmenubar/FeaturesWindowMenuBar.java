@@ -1,5 +1,6 @@
 package com.gamalinda.java.jframe.jmenubar;
 
+import com.gamalinda.java.jwindow.WriteToScreenFeature;
 import com.gamalinda.java.util.Log;
 
 import javax.swing.*;
@@ -71,16 +72,7 @@ public class FeaturesWindowMenuBar implements ActionListener {
     }
 
     private void writeOnScreen() {
-        JWindow w = new JWindow(); //A frameless window
-        w.add(new JLabel("Hello World!"));
-
-        getScreenDimensions();
-        int centerHorizontal = (int) (SCREEN_WIDTH / 2);
-        int centerVertical = (int) (SCREEN_HEIGHT / 2);
-
-        w.setLocation(centerHorizontal, centerVertical);
-        w.pack(); //Causes this Window to be sized to fit the preferred size and layouts of its subcomponents.
-        w.setVisible(true);
+        new WriteToScreenFeature().execute();
     }
 
     private void getScreenDimensions() {
