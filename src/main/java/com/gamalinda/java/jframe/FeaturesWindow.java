@@ -1,24 +1,15 @@
 package com.gamalinda.java.jframe;
 
-import com.gamalinda.java.jwindow.WriteToScreenFeature;
-import com.gamalinda.java.util.Log;
+import com.gamalinda.java.jframe.jmenubar.FeaturesWindowMenuBar;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class FeaturesWindow implements ActionListener {
+public class FeaturesWindow {
     private static final String TAG = FeaturesWindow.class.getSimpleName();
 
     private static JFrame mainFrame;
-    private static JMenuBar menuBar;
-    private static JMenu fileMenu;
-    private static JMenu featuresMenu;
 
-    //Menu Item Names/Action
-    private static final String EXIT = "Exit";
-    private static final String WRITE_TO_SCREEN = "Write to Screen";
+    private static FeaturesWindowMenuBar mainMenuBar;
 
     private FeaturesWindow() {
     }
@@ -33,30 +24,8 @@ public class FeaturesWindow implements ActionListener {
     }
 
     public void showMenuBar() {
-        menuBar = new JMenuBar(); //The Menu Bar on Windows
-        fileMenu = new JMenu("File"); //The Menu Bar Menu item
-        featuresMenu = new JMenu("Features");
-
-        menuBar.add(fileMenu); //Add the menus to the menu bar
-        showFileMenuItems();
-
-        menuBar.add(featuresMenu);
-        showFeaturesMenuItems();
-
-        mainFrame.getContentPane().add(BorderLayout.NORTH, menuBar);
-    }
-
-    private void showFileMenuItems() {
-        JMenuItem exitMenuItem = new JMenuItem(EXIT); //Menu item
-        exitMenuItem.addActionListener(this);
-        fileMenu.add(exitMenuItem); //Adding a menu item to a menu
-    }
-
-    private void showFeaturesMenuItems() {
-        JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
-        writeToScreenItem.addActionListener(this);
-
-        featuresMenu.add(writeToScreenItem);
+        mainMenuBar = new FeaturesWindowMenuBar();
+        mainFrame.setJMenuBar(mainMenuBar.getMenuBar());
     }
 
     public void showWindow() {
@@ -67,23 +36,4 @@ public class FeaturesWindow implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(EXIT)) {
-            Log.d(TAG, "exitApp()"); //Should log first before exit app because it won't be reached after exit
-            exitApp();
-        } else if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
-            writeOnScreen();
-            Log.d(TAG, "writeOnScreen()");
-        }
-    }
-
-    private void exitApp() {
-        System.exit(0);
-    }
-
-    private void writeOnScreen() {
-        WriteToScreenFeature writeToScreenFeature = new WriteToScreenFeature();
-        writeToScreenFeature.execute();
-    }
 }

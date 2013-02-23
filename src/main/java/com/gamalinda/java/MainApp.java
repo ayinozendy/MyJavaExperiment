@@ -2,7 +2,10 @@ package com.gamalinda.java;
 
 import com.gamalinda.java.jframe.FeaturesWindow;
 import com.gamalinda.java.util.Log;
+import com.gamalinda.java.util.SystemCheckerUtility;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,9 +23,44 @@ public class MainApp {
     }
 
     public static void main(String[] args) {
-
+        runAsMacAppIfOSX();
         argsList = Arrays.asList(args);
         getInstance().run();
+    }
+
+    private static void runAsMacAppIfOSX() {
+        if (SystemCheckerUtility.isOSX()) {
+            Log.i(TAG, "OS X detected, applying OS X look and feel");
+            runAsMacApp();
+        }
+    }
+
+    private static void runAsMacApp() {
+        setUiLookAndFeelAsMacApp();
+    }
+
+    //Use this if running from Jar
+    private static void moveMenuBarToMacMenuBar() {
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
+    }
+
+    //Use this if running from Jar
+    private static void changeMacMenuBarApplicationName() {
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "Java Experiment");
+    }
+
+    private static void setUiLookAndFeelAsMacApp() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            Log.e(TAG, e.toString());
+        } catch (InstantiationException e) {
+            Log.e(TAG, e.toString());
+        } catch (IllegalAccessException e) {
+            Log.e(TAG, e.toString());
+        } catch (UnsupportedLookAndFeelException e) {
+            Log.e(TAG, e.toString());
+        }
     }
 
     public static MainApp getInstance() {
@@ -30,15 +68,14 @@ public class MainApp {
     }
 
     private void run() {
-        printHelloWorld();
-        printArgs();
-        respondToArgs();
-        showAndRunMainFeaturesWindow();
-    }
-
-    private void printHelloWorld() {
-        System.out.println("Hello World");
-        Log.i(TAG, "Hello World");
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                respondToArgs();
+                printArgs();
+                showAndRunMainFeaturesWindow();
+            }
+        });
     }
 
     private void printArgs() {
@@ -49,7 +86,6 @@ public class MainApp {
 
     private void respondToArgs() {
         for (String arg : argsList) {
-
             if (arg.equals("-a")) {
                 System.out.println("Responding to A");
             } else if (arg.equals("-b")) {
@@ -65,7 +101,7 @@ public class MainApp {
     }
 
     private void showAndRunMainFeaturesWindow() {
-        FeaturesWindow mainFeaturesWindow = FeaturesWindow.buildWindow("MyJavaExperiment", WINDOW_WIDTH, WINDOW_HEIGHT);
+        FeaturesWindow mainFeaturesWindow = FeaturesWindow.buildWindow("The Java Experiment", WINDOW_WIDTH, WINDOW_HEIGHT);
         mainFeaturesWindow.showMenuBar();
         mainFeaturesWindow.showWindow();
         mainFeaturesWindow.run();
