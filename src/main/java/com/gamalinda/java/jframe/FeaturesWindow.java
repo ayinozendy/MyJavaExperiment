@@ -8,6 +8,7 @@ public class FeaturesWindow {
     private static final String TAG = FeaturesWindow.class.getSimpleName();
 
     private static JFrame mainFrame;
+
     private static FeaturesWindowMenuBar mainMenuBar;
 
     private FeaturesWindow() {
@@ -34,4 +35,5 @@ public class FeaturesWindow {
     public void run() {
 
     }
+
 }
