@@ -1,4 +1,5 @@
 target/
+package/
 *.iml
 *.ipr
 *.iws
