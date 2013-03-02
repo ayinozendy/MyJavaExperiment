@@ -47,23 +47,30 @@ public class FeaturesWindowMenuBar implements ActionListener {
         showFeaturesMenuItems();
     }
 
-    private void showFeaturesMenuItems() {
-        JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
-        writeToScreenItem.addActionListener(this);
-        writeToScreenItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
-
-        JMenuItem showPictureItem = new JMenuItem(SHOW_PICTURE);
-        showPictureItem.addActionListener(this);
-        showPictureItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
-
-        featuresMenu.add(writeToScreenItem);
-        featuresMenu.add(showPictureItem);
-    }
-
     private void showFileMenuItems() {
         JMenuItem exitMenuItem = new JMenuItem(EXIT); //Menu item
         exitMenuItem.addActionListener(this);
         fileMenu.add(exitMenuItem); //Adding a menu item to a menu
+    }
+
+    private void showFeaturesMenuItems() {
+        loadWriteToScreenMenuItem();
+        loadShowPictureMenuItem();
+    }
+
+    private void loadWriteToScreenMenuItem() {
+        JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
+        writeToScreenItem.addActionListener(this);
+        writeToScreenItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
+        featuresMenu.add(writeToScreenItem);
+    }
+
+    private void loadShowPictureMenuItem() {
+        JMenuItem showPictureItem = new JMenuItem(SHOW_PICTURE);
+        showPictureItem.addActionListener(this);
+        showPictureItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
+
+        featuresMenu.add(showPictureItem);
     }
 
     @Override
