@@ -1,5 +1,6 @@
 package com.gamalinda.java.jframe.jmenubar;
 
+import com.gamalinda.java.jdialog.ShowDialogFeature;
 import com.gamalinda.java.jframe.Feature;
 import com.gamalinda.java.jframe.ShowPictureFeature;
 import com.gamalinda.java.jframe.WriteToScreenFeature;
@@ -23,6 +24,7 @@ public class FeaturesWindowMenuBar implements ActionListener {
     private static final String FEATURES = "Features";
 
     //Menu Item Names/Action
+    private static final String SHOW_DIALOG = "Show Dialog";
     private static final String EXIT = "Exit";
     private static final String WRITE_TO_SCREEN = "Write to Screen";
     private static final String SHOW_PICTURE = "Show Picture";
@@ -48,6 +50,10 @@ public class FeaturesWindowMenuBar implements ActionListener {
     }
 
     private void showFileMenuItems() {
+        JMenuItem dialogMenuItem = new JMenuItem(SHOW_DIALOG);
+        dialogMenuItem.addActionListener(this);
+        fileMenu.add(dialogMenuItem);
+
         JMenuItem exitMenuItem = new JMenuItem(EXIT); //Menu item
         exitMenuItem.addActionListener(this);
         fileMenu.add(exitMenuItem); //Adding a menu item to a menu
@@ -76,7 +82,10 @@ public class FeaturesWindowMenuBar implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(EXIT)) {
+        if (e.getActionCommand().equals(SHOW_DIALOG)) {
+            executeFeature(new ShowDialogFeature((Frame) menuBar.getTopLevelAncestor()));
+            Log.d(TAG, "showDialog()");
+        } else if (e.getActionCommand().equals(EXIT)) {
             Log.d(TAG, "exitApp()"); //Should log first before exit app because it won't be reached when exit
             exitApp();
         } else if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
