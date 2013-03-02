@@ -9,8 +9,6 @@ import java.awt.event.KeyListener;
 public class WriteToScreenFeature implements KeyListener {
     private static final String TAG = WriteToScreenFeature.class.getSimpleName();
 
-    private static final int ESCAPE_KEY_CODE = 27;
-
     JFrame frame;
 
     public void execute() {
@@ -51,7 +49,7 @@ public class WriteToScreenFeature implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == ESCAPE_KEY_CODE) {
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             frame.dispose();
         }
     }

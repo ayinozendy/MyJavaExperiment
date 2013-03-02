@@ -50,7 +50,7 @@ public class ShowPictureFeature implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == 27) {
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             frame.dispose();
         }
     }
