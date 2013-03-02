@@ -1,5 +1,7 @@
 package com.gamalinda.java.jframe;
 
+import com.gamalinda.java.util.ScreenDimensionHelper;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -7,18 +9,18 @@ import java.awt.event.KeyListener;
 public class ShowPictureFeature implements KeyListener {
     private static final String TAG = ShowPictureFeature.class.getSimpleName();
 
-    JFrame frame;
+    private JFrame frame;
 
     public void execute() {
         loadFrame();
         addImageToFrame();
+        setFrameLocation();
         showFrame();
     }
 
     private void loadFrame() {
         frame = new JFrame();
         frame.addKeyListener(this);
-        frame.setLocation(100, 100);
     }
 
     private void addImageToFrame() {
@@ -31,10 +33,16 @@ public class ShowPictureFeature implements KeyListener {
 
         imageLabel.setSize(imageIconWidth, imageIconHeight);
         frame.add(imageLabel);
+        frame.pack();
+    }
+
+    private void setFrameLocation() {
+        new ScreenDimensionHelper().setWindowLocationToCenter(frame);
     }
 
     private void showFrame() {
         frame.pack();
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 
@@ -50,7 +58,7 @@ public class ShowPictureFeature implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == 27) {
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             frame.dispose();
         }
     }
