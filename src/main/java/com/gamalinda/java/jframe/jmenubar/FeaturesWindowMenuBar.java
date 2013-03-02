@@ -1,6 +1,7 @@
 package com.gamalinda.java.jframe.jmenubar;
 
-import com.gamalinda.java.jwindow.WriteToScreenFeature;
+import com.gamalinda.java.jframe.ShowPictureFeature;
+import com.gamalinda.java.jframe.WriteToScreenFeature;
 import com.gamalinda.java.util.Log;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class FeaturesWindowMenuBar implements ActionListener {
     //Menu Item Names/Action
     private static final String EXIT = "Exit";
     private static final String WRITE_TO_SCREEN = "Write to Screen";
+    private static final String SHOW_PICTURE = "Show Picture";
 
     //Desktop screen dimensions
     private static double SCREEN_WIDTH;
@@ -47,7 +49,11 @@ public class FeaturesWindowMenuBar implements ActionListener {
         JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
         writeToScreenItem.addActionListener(this);
 
+        JMenuItem showPictureItem = new JMenuItem(SHOW_PICTURE);
+        showPictureItem.addActionListener(this);
+
         featuresMenu.add(writeToScreenItem);
+        featuresMenu.add(showPictureItem);
     }
 
     private void showFileMenuItems() {
@@ -64,6 +70,9 @@ public class FeaturesWindowMenuBar implements ActionListener {
         } else if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
             writeOnScreen();
             Log.d(TAG, "writeOnScreen()");
+        } else if (e.getActionCommand().equals(SHOW_PICTURE)) {
+            showPicture();
+            Log.d(TAG, "showPicture()");
         }
     }
 
@@ -73,6 +82,10 @@ public class FeaturesWindowMenuBar implements ActionListener {
 
     private void writeOnScreen() {
         new WriteToScreenFeature().execute();
+    }
+
+    private void showPicture() {
+        new ShowPictureFeature().execute();
     }
 
     private void getScreenDimensions() {
