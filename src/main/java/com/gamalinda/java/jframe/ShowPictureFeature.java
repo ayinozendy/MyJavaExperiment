@@ -42,6 +42,7 @@ public class ShowPictureFeature implements KeyListener {
 
     private void showFrame() {
         frame.pack();
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 
