@@ -2,8 +2,10 @@ package com.gamalinda.java.jwindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class WriteToScreenFeature {
+public class WriteToScreenFeature implements KeyListener {
     private static final String TAG = WriteToScreenFeature.class.getSimpleName();
 
     //Desktop screen dimensions
@@ -27,5 +29,19 @@ public class WriteToScreenFeature {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         SCREEN_WIDTH = screenSize.getWidth();
         SCREEN_HEIGHT = screenSize.getHeight();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 }
