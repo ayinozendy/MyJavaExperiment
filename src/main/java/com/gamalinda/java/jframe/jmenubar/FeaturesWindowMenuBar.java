@@ -1,7 +1,7 @@
 package com.gamalinda.java.jframe.jmenubar;
 
 import com.gamalinda.java.jframe.ShowPictureFeature;
-import com.gamalinda.java.jwindow.WriteToScreenFeature;
+import com.gamalinda.java.jframe.WriteToScreenFeature;
 import com.gamalinda.java.util.Log;
 
 import javax.swing.*;

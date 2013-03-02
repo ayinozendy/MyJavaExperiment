@@ -1,4 +1,4 @@
-package com.gamalinda.java.jwindow;
+package com.gamalinda.java.jframe;
 
 import com.gamalinda.java.util.ScreenDimensionHelper;
 
