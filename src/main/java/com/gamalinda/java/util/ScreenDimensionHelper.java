@@ -43,4 +43,13 @@ public class ScreenDimensionHelper {
     public double getMiddleHeight() {
         return SCREEN_HEIGHT / 2;
     }
+
+    public void setWindowLocationToCenter(Window window) {
+        int windowWidth = window.getWidth();
+        int windowHeight = window.getHeight();
+
+        int x = (int) (getMiddleWidth() - (windowWidth / 2));
+        int y = (int) (getMiddleHeight() - (windowHeight / 2));
+        window.setLocation(x, y);
+    }
 }
