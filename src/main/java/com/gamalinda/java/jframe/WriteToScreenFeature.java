@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 public class WriteToScreenFeature implements KeyListener {
     private static final String TAG = WriteToScreenFeature.class.getSimpleName();
 
-    JFrame frame;
+    private JFrame frame;
 
     public void execute() {
         loadFrame();
