@@ -1,5 +1,6 @@
 package com.gamalinda.java.jframe.jmenubar;
 
+import com.gamalinda.java.jframe.Feature;
 import com.gamalinda.java.jframe.ShowPictureFeature;
 import com.gamalinda.java.jframe.WriteToScreenFeature;
 import com.gamalinda.java.util.Log;
@@ -8,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class FeaturesWindowMenuBar implements ActionListener {
     private static final String TAG = FeaturesWindowMenuBar.class.getSimpleName();
@@ -45,21 +47,30 @@ public class FeaturesWindowMenuBar implements ActionListener {
         showFeaturesMenuItems();
     }
 
-    private void showFeaturesMenuItems() {
-        JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
-        writeToScreenItem.addActionListener(this);
-
-        JMenuItem showPictureItem = new JMenuItem(SHOW_PICTURE);
-        showPictureItem.addActionListener(this);
-
-        featuresMenu.add(writeToScreenItem);
-        featuresMenu.add(showPictureItem);
-    }
-
     private void showFileMenuItems() {
         JMenuItem exitMenuItem = new JMenuItem(EXIT); //Menu item
         exitMenuItem.addActionListener(this);
         fileMenu.add(exitMenuItem); //Adding a menu item to a menu
+    }
+
+    private void showFeaturesMenuItems() {
+        loadWriteToScreenMenuItem();
+        loadShowPictureMenuItem();
+    }
+
+    private void loadWriteToScreenMenuItem() {
+        JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
+        writeToScreenItem.addActionListener(this);
+        writeToScreenItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
+        featuresMenu.add(writeToScreenItem);
+    }
+
+    private void loadShowPictureMenuItem() {
+        JMenuItem showPictureItem = new JMenuItem(SHOW_PICTURE);
+        showPictureItem.addActionListener(this);
+        showPictureItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
+
+        featuresMenu.add(showPictureItem);
     }
 
     @Override
@@ -68,11 +79,11 @@ public class FeaturesWindowMenuBar implements ActionListener {
             Log.d(TAG, "exitApp()"); //Should log first before exit app because it won't be reached when exit
             exitApp();
         } else if (e.getActionCommand().equals(WRITE_TO_SCREEN)) {
-            writeOnScreen();
-            Log.d(TAG, "writeOnScreen()");
+            executeFeature(new WriteToScreenFeature());
+            Log.d(TAG, "execute WriteToScreenFeature()");
         } else if (e.getActionCommand().equals(SHOW_PICTURE)) {
-            showPicture();
-            Log.d(TAG, "showPicture()");
+            executeFeature(new ShowPictureFeature());
+            Log.d(TAG, "execute ShowPictureFeature()");
         }
     }
 
@@ -80,18 +91,8 @@ public class FeaturesWindowMenuBar implements ActionListener {
         System.exit(0);
     }
 
-    private void writeOnScreen() {
-        new WriteToScreenFeature().execute();
-    }
-
-    private void showPicture() {
-        new ShowPictureFeature().execute();
-    }
-
-    private void getScreenDimensions() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        SCREEN_WIDTH = screenSize.getWidth();
-        SCREEN_HEIGHT = screenSize.getHeight();
+    private void executeFeature(Feature feature) {
+        feature.execute();
     }
 
     public JMenuBar getMenuBar() {
