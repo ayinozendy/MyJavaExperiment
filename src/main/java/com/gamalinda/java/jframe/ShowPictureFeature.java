@@ -37,14 +37,7 @@ public class ShowPictureFeature implements KeyListener {
     }
 
     private void setFrameLocation() {
-        ScreenDimensionHelper screenDimensionHelper = new ScreenDimensionHelper();
-        int centerHorizontal = (int) screenDimensionHelper.getMiddleWidth();
-        int centerVertical = (int) screenDimensionHelper.getMiddleHeight();
-
-        int xLocation = centerHorizontal - (frame.getWidth() / 2);
-        int yLocation = centerVertical - (frame.getHeight() / 2);
-
-        frame.setLocation(xLocation, yLocation);
+        new ScreenDimensionHelper().setWindowLocationToCenter(frame);
     }
 
     private void showFrame() {

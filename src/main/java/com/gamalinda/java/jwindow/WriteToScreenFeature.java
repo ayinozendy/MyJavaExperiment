@@ -25,11 +25,7 @@ public class WriteToScreenFeature implements KeyListener {
     }
 
     private void setFrameLocation() {
-        ScreenDimensionHelper screenDimensionHelper = new ScreenDimensionHelper();
-        int centerHorizontal = (int) screenDimensionHelper.getMiddleWidth();
-        int centerVertical = (int) screenDimensionHelper.getMiddleHeight();
-
-        frame.setLocation(centerHorizontal, centerVertical);
+        new ScreenDimensionHelper().setWindowLocationToCenter(frame);
     }
 
     private void showFrame() {
