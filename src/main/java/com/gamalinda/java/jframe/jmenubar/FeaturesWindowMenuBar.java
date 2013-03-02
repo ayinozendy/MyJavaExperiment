@@ -6,6 +6,7 @@ import com.gamalinda.java.jframe.WriteToScreenFeature;
 import com.gamalinda.java.util.Log;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -61,6 +62,7 @@ public class FeaturesWindowMenuBar implements ActionListener {
         JMenuItem writeToScreenItem = new JMenuItem(WRITE_TO_SCREEN);
         writeToScreenItem.addActionListener(this);
         writeToScreenItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
+
         featuresMenu.add(writeToScreenItem);
     }
 
