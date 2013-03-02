@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class WriteToScreenFeature implements KeyListener {
+public class WriteToScreenFeature implements Feature, KeyListener {
     private static final String TAG = WriteToScreenFeature.class.getSimpleName();
 
     private JFrame frame;

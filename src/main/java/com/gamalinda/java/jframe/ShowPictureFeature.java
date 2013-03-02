@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class ShowPictureFeature implements KeyListener {
+public class ShowPictureFeature implements Feature, KeyListener {
     private static final String TAG = ShowPictureFeature.class.getSimpleName();
 
     private JFrame frame;
