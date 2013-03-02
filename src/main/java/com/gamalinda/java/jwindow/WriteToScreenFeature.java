@@ -1,7 +1,8 @@
 package com.gamalinda.java.jwindow;
 
+import com.gamalinda.java.util.ScreenDimensionHelper;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -10,31 +11,32 @@ public class WriteToScreenFeature implements KeyListener {
 
     private static final int ESCAPE_KEY_CODE = 27;
 
-    //Desktop screen dimensions
-    private static double SCREEN_WIDTH;
-    private static double SCREEN_HEIGHT;
-
     JFrame frame;
 
     public void execute() {
+        loadFrame();
+        setFrameLocation();
+        showFrame();
+    }
+
+    private void loadFrame() {
         frame = new JFrame(); //A frameless window
         frame.add(new JLabel("Hello World!"));
         frame.setUndecorated(true);
         frame.addKeyListener(this);
-
-        getScreenDimensions();
-        int centerHorizontal = (int) (SCREEN_WIDTH / 2);
-        int centerVertical = (int) (SCREEN_HEIGHT / 2);
-
-        frame.setLocation(centerHorizontal, centerVertical);
-        frame.pack(); //Causes this Window to be sized to fit the preferred size and layouts of its subcomponents.
-        frame.setVisible(true);
     }
 
-    private void getScreenDimensions() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        SCREEN_WIDTH = screenSize.getWidth();
-        SCREEN_HEIGHT = screenSize.getHeight();
+    private void setFrameLocation() {
+        ScreenDimensionHelper screenDimensionHelper = new ScreenDimensionHelper();
+        int centerHorizontal = (int) screenDimensionHelper.getMiddleWidth();
+        int centerVertical = (int) screenDimensionHelper.getMiddleHeight();
+
+        frame.setLocation(centerHorizontal, centerVertical);
+    }
+
+    private void showFrame() {
+        frame.pack(); //Causes this Window to be sized to fit the preferred size and layouts of its subcomponents.
+        frame.setVisible(true);
     }
 
     @Override
