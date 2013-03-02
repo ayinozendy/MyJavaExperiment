@@ -1,5 +1,7 @@
 package com.gamalinda.java.jframe;
 
+import com.gamalinda.java.util.ScreenDimensionHelper;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -12,13 +14,13 @@ public class ShowPictureFeature implements KeyListener {
     public void execute() {
         loadFrame();
         addImageToFrame();
+        setFrameLocation();
         showFrame();
     }
 
     private void loadFrame() {
         frame = new JFrame();
         frame.addKeyListener(this);
-        frame.setLocation(100, 100);
     }
 
     private void addImageToFrame() {
@@ -31,6 +33,18 @@ public class ShowPictureFeature implements KeyListener {
 
         imageLabel.setSize(imageIconWidth, imageIconHeight);
         frame.add(imageLabel);
+        frame.pack();
+    }
+
+    private void setFrameLocation() {
+        ScreenDimensionHelper screenDimensionHelper = new ScreenDimensionHelper();
+        int centerHorizontal = (int) screenDimensionHelper.getMiddleWidth();
+        int centerVertical = (int) screenDimensionHelper.getMiddleHeight();
+
+        int xLocation = centerHorizontal - (frame.getWidth() / 2);
+        int yLocation = centerVertical - (frame.getHeight() / 2);
+
+        frame.setLocation(xLocation, yLocation);
     }
 
     private void showFrame() {
